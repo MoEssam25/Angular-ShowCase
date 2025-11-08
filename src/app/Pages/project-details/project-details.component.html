@@ -1,0 +1,106 @@
+<div class="project-details-page">
+    <div class="container">
+        <!-- Loading State -->
+        <div *ngIf="isLoading" class="loading">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Loading project details...</p>
+        </div>
+
+        <!-- Project Details -->
+        <div *ngIf="!isLoading && project" class="project-details">
+            <!-- Back Button -->
+            <button class="back-button" (click)="goBack()">
+                <i class="fas fa-arrow-left"></i>
+                Back to {{ project.category | titlecase }} Projects
+            </button>
+
+            <!-- Project Header -->
+            <header class="project-header">
+                <h1 class="project-title">{{ project.title }}</h1>
+                <p class="project-category">{{ project.category | titlecase }}</p>
+            </header>
+
+            <!-- Project Image -->
+            <div class="project-image-large">
+                <img [src]="project.imageUrl" [alt]="project.title">
+            </div>
+
+            <!-- Project Info Grid -->
+            <div class="project-info-grid">
+                <!-- Main Content -->
+                <div class="project-main">
+                    <section class="project-description">
+                        <h2>About This Project</h2>
+                        <p>{{ project.fullDescription || project.description }}</p>
+                    </section>
+
+                    <!-- Technologies -->
+                    <section class="project-technologies">
+                        <h2>Technologies Used</h2>
+                        <div class="tech-tags">
+                            <span class="tech-tag" *ngFor="let tech of project.technologies">{{ tech }}</span>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Sidebar -->
+                <div class="project-sidebar">
+                    <!-- Contributors -->
+                    <section class="project-contributors">
+                        <h3>
+                            <i class="fas fa-users"></i>
+                            Contributors
+                        </h3>
+                        <ul>
+                            <li *ngFor="let contributor of project.contributors">{{ contributor }}</li>
+                        </ul>
+                    </section>
+
+                    <!-- Links -->
+                    <section class="project-links" *ngIf="project.githubUrl || project.demoUrl">
+                        <h3>
+                            <i class="fas fa-external-link-alt"></i>
+                            Project Links
+                        </h3>
+                        <div class="link-buttons">
+                            <a *ngIf="project.githubUrl" [href]="project.githubUrl" target="_blank"
+                                class="link-button github">
+                                <i class="fab fa-github"></i>
+                                GitHub
+                            </a>
+                            <a *ngIf="project.demoUrl" [href]="project.demoUrl" target="_blank"
+                                class="link-button demo">
+                                <i class="fas fa-external-link-alt"></i>
+                                Live Demo
+                            </a>
+                        </div>
+                    </section>
+
+                    <!-- Project Info -->
+                    <section class="project-meta">
+                        <h3>
+                            <i class="fas fa-info-circle"></i>
+                            Project Info
+                        </h3>
+                        <div class="meta-item">
+                            <strong>Category:</strong>
+                            <span>{{ project.category | titlecase }}</span>
+                        </div>
+                        <div class="meta-item">
+                            <strong>Team Size:</strong>
+                            <span>{{ project.contributors.length }} contributor(s)</span>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Not Found -->
+        <div *ngIf="!isLoading && !project" class="not-found">
+            <i class="fas fa-exclamation-triangle"></i>
+            <h2>Project Not Found</h2>
+            <p>The project you're looking for doesn't exist.</p>
+            <a routerLink="/" class="back-home">Back to Homepage</a>
+        </div>
+    </div>
+</div>

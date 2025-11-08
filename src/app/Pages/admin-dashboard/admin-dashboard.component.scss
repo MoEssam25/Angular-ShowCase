@@ -1,0 +1,387 @@
+.admin-dashboard {
+    padding: 2rem 0;
+    min-height: 80vh;
+    background: #f8f9fa;
+}
+
+.admin-header {
+    text-align: center;
+    margin-bottom: 2rem;
+
+    h1 {
+        color: #3a0ca3;
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        font-weight: 700;
+    }
+
+    p {
+        color: #6c757d;
+        font-size: 1.1rem;
+    }
+}
+
+.admin-tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.tab-button {
+    background: none;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #6c757d;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &:hover {
+        color: #4361ee;
+        background: #f8f9fa;
+    }
+
+    &.active {
+        color: #4361ee;
+        border-bottom-color: #4361ee;
+        background: white;
+    }
+}
+
+.tab-content {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.tab-panel {
+    padding: 2rem;
+}
+
+/* Projects List Styles */
+.projects-list {
+    h2 {
+        color: #3a0ca3;
+        margin-bottom: 1.5rem;
+        font-size: 1.5rem;
+    }
+}
+
+.no-projects {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: #6c757d;
+
+    i {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        color: #dee2e6;
+    }
+}
+
+.project-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.project-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+
+    &:hover {
+        border-color: #4361ee;
+        box-shadow: 0 2px 10px rgba(67, 97, 238, 0.1);
+    }
+}
+
+.project-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+}
+
+.project-thumb {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.project-details {
+    flex: 1;
+
+    h3 {
+        color: #212529;
+        margin-bottom: 0.3rem;
+        font-size: 1.1rem;
+    }
+
+    .project-category {
+        color: #4361ee;
+        font-size: 0.8rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+    }
+
+    .project-description {
+        color: #6c757d;
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+}
+
+.project-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: #6c757d;
+
+    span {
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+    }
+}
+
+.project-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-edit,
+.btn-delete {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    transition: all 0.3s ease;
+}
+
+.btn-edit {
+    background: #4cc9f0;
+    color: white;
+
+    &:hover {
+        background: #3aa8d8;
+    }
+}
+
+.btn-delete {
+    background: #dc3545;
+    color: white;
+
+    &:hover {
+        background: #c82333;
+    }
+}
+
+/* Project Form Styles */
+.project-form {
+    max-width: 800px;
+    margin: 0 auto;
+
+    h2 {
+        color: #3a0ca3;
+        margin-bottom: 2rem;
+        text-align: center;
+    }
+}
+
+.form-section {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e9ecef;
+
+    h3 {
+        color: #495057;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        &::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: #4361ee;
+            border-radius: 2px;
+        }
+    }
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+
+    label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: #495057;
+    }
+
+    input,
+    select,
+    textarea {
+        width: 100%;
+        padding: 0.8rem;
+        border: 2px solid #e9ecef;
+        border-radius: 6px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+
+        &:focus {
+            outline: none;
+            border-color: #4361ee;
+        }
+    }
+
+    textarea {
+        resize: vertical;
+        min-height: 80px;
+    }
+}
+
+.input-with-button {
+    display: flex;
+    gap: 0.5rem;
+
+    input {
+        flex: 1;
+    }
+
+    .btn-add {
+        background: #4361ee;
+        color: white;
+        border: none;
+        padding: 0.8rem 1.2rem;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+        transition: background 0.3s ease;
+
+        &:hover {
+            background: #3a0ca3;
+        }
+    }
+}
+
+.tags-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.tag {
+    background: #4361ee;
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tag-remove {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e9ecef;
+}
+
+.btn-primary,
+.btn-secondary {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: #4361ee;
+    color: white;
+
+    &:hover {
+        background: #3a0ca3;
+    }
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+
+    &:hover {
+        background: #5a6268;
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-tabs {
+        flex-direction: column;
+    }
+
+    .project-item {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 1rem;
+    }
+
+    .project-actions {
+        justify-content: flex-end;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+}

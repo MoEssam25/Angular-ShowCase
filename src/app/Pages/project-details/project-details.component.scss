@@ -1,0 +1,247 @@
+.project-details-page {
+    padding: 2rem 0;
+    min-height: 80vh;
+}
+
+.loading {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: #6c757d;
+
+    i {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+}
+
+.back-button {
+    background: none;
+    border: 2px solid #4361ee;
+    color: #4361ee;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &:hover {
+        background: #4361ee;
+        color: white;
+    }
+}
+
+.project-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.project-title {
+    font-size: 2.5rem;
+    color: #212529;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.project-category {
+    font-size: 1.2rem;
+    color: #6c757d;
+    text-transform: capitalize;
+}
+
+.project-image-large {
+    margin-bottom: 3rem;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+
+    img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+    }
+}
+
+.project-info-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+}
+
+.project-main {
+    section {
+        margin-bottom: 2.5rem;
+    }
+
+    h2 {
+        color: #3a0ca3;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+    }
+}
+
+.project-description {
+    p {
+        line-height: 1.8;
+        color: #495057;
+        font-size: 1.1rem;
+    }
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.tech-tag {
+    background: #4361ee;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.project-sidebar {
+    section {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        margin-bottom: 2rem;
+    }
+
+    h3 {
+        color: #3a0ca3;
+        margin-bottom: 1rem;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+}
+
+.project-contributors {
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid #e9ecef;
+        color: #495057;
+
+        &:last-child {
+            border-bottom: none;
+        }
+    }
+}
+
+.link-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.link-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-align: center;
+    justify-content: center;
+
+    &.github {
+        background: #333;
+        color: white;
+
+        &:hover {
+            background: #000;
+        }
+    }
+
+    &.demo {
+        background: #4cc9f0;
+        color: white;
+
+        &:hover {
+            background: #3aa8d8;
+        }
+    }
+}
+
+.project-meta {
+    .meta-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.8rem 0;
+        border-bottom: 1px solid #e9ecef;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        strong {
+            color: #495057;
+        }
+
+        span {
+            color: #6c757d;
+        }
+    }
+}
+
+.not-found {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: #6c757d;
+
+    i {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        color: #dc3545;
+    }
+
+    h2 {
+        margin-bottom: 1rem;
+        color: #495057;
+    }
+}
+
+.back-home {
+    display: inline-block;
+    background: #4361ee;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    margin-top: 1rem;
+
+    &:hover {
+        background: #3a0ca3;
+    }
+}
+
+@media (max-width: 768px) {
+    .project-info-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .project-title {
+        font-size: 2rem;
+    }
+
+    .project-image-large img {
+        height: 250px;
+    }
+}

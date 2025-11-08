@@ -1,0 +1,26 @@
+<header>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-content">
+                <div class="logo">
+                    <a routerLink="/" class="logo-link">
+                        <i class="fas fa-rocket"></i>
+                        <span>Project ShowCase</span>
+                    </a>
+                </div>
+
+                <div class="nav-links" [class.active]="isMenuOpen">
+                    <a routerLink="/" class="nav-link">Homepage</a>
+                    <a routerLink="/projects/machine-learning" class="nav-link">Projects</a>
+                    <a routerLink="/admin" class="nav-link">Admin</a> <!-- Added Admin link -->
+                </div>
+
+                <div class="nav-toggle" (click)="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>

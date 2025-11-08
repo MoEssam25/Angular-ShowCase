@@ -1,0 +1,193 @@
+<div class="admin-dashboard">
+    <div class="container">
+        <!-- Header -->
+        <header class="admin-header">
+            <h1>Admin Dashboard</h1>
+            <p>Manage projects and categories</p>
+        </header>
+
+        <!-- Tabs -->
+        <div class="admin-tabs">
+            <button class="tab-button" [class.active]="activeTab === 'projects'" (click)="setActiveTab('projects')">
+                <i class="fas fa-project-diagram"></i>
+                Manage Projects
+            </button>
+            <button class="tab-button" [class.active]="activeTab === 'add-project'"
+                (click)="setActiveTab('add-project')">
+                <i class="fas fa-plus-circle"></i>
+                Add New Project
+            </button>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="tab-content">
+            <!-- Manage Projects Tab -->
+            <div *ngIf="activeTab === 'projects'" class="tab-panel">
+                <div class="projects-list">
+                    <h2>All Projects ({{ allProjects.length }})</h2>
+
+                    <div *ngIf="allProjects.length === 0" class="no-projects">
+                        <i class="fas fa-inbox"></i>
+                        <p>No projects found. Add your first project!</p>
+                    </div>
+
+                    <div class="project-items">
+                        <div *ngFor="let project of allProjects" class="project-item">
+                            <div class="project-info">
+                                <img [src]="project.imageUrl" [alt]="project.title" class="project-thumb">
+                                <div class="project-details">
+                                    <h3>{{ project.title }}</h3>
+                                    <p class="project-category">{{ project.category | titlecase }}</p>
+                                    <p class="project-description">{{ project.description }}</p>
+                                    <div class="project-meta">
+                                        <span class="tech-count">
+                                            <i class="fas fa-code"></i>
+                                            {{ project.technologies.length }} technologies
+                                        </span>
+                                        <span class="contributor-count">
+                                            <i class="fas fa-users"></i>
+                                            {{ project.contributors.length }} contributors
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-actions">
+                                <button class="btn-delete" (click)="deleteProject(project.id)">
+                                    <i class="fas fa-trash"></i>
+                                    Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Add Project Tab -->
+            <div *ngIf="activeTab === 'add-project'" class="tab-panel">
+                <form class="project-form" (ngSubmit)="addProject()">
+                    <h2>Add New Project</h2>
+
+                    <!-- Basic Information -->
+                    <div class="form-section">
+                        <h3>Basic Information</h3>
+
+                        <div class="form-group">
+                            <label for="projectTitle">Project Title *</label>
+                            <input type="text" id="projectTitle" [(ngModel)]="newProject.title" name="title"
+                                placeholder="Enter project title" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="projectCategory">Category *</label>
+                            <select id="projectCategory" [(ngModel)]="newProject.category" name="category" required>
+                                <option value="machine-learning">Machine Learning</option>
+                                <option value="data-science">Data Science</option>
+                                <option value="web-development">Web Development</option>
+                                <option value="mobile-development">Mobile Development</option>
+                                <option value="cybersecurity">Cybersecurity</option>
+                                <option value="iot">IoT</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="projectDescription">Short Description *</label>
+                            <textarea id="projectDescription" [(ngModel)]="newProject.description" name="description"
+                                placeholder="Brief description of the project" rows="3" required></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="fullDescription">Full Description</label>
+                            <textarea id="fullDescription" [(ngModel)]="newProject.fullDescription"
+                                name="fullDescription" placeholder="Detailed project description" rows="5"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Technologies -->
+                    <div class="form-section">
+                        <h3>Technologies Used *</h3>
+                        <div class="form-group">
+                            <label>Add Technologies</label>
+                            <div class="input-with-button">
+                                <input type="text" [(ngModel)]="currentTechnology" name="technology"
+                                    placeholder="e.g., Angular, Python, React" (keyup.enter)="addTechnology()">
+                                <button type="button" class="btn-add" (click)="addTechnology()">
+                                    <i class="fas fa-plus"></i>
+                                    Add
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="tags-list" *ngIf="newProject.technologies.length > 0">
+                            <div class="tag" *ngFor="let tech of newProject.technologies; let i = index">
+                                {{ tech }}
+                                <button type="button" class="tag-remove" (click)="removeTechnology(i)">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contributors -->
+                    <div class="form-section">
+                        <h3>Contributors *</h3>
+                        <div class="form-group">
+                            <label>Add Contributors</label>
+                            <div class="input-with-button">
+                                <input type="text" [(ngModel)]="currentContributor" name="contributor"
+                                    placeholder="Enter contributor name" (keyup.enter)="addContributor()">
+                                <button type="button" class="btn-add" (click)="addContributor()">
+                                    <i class="fas fa-plus"></i>
+                                    Add
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="tags-list" *ngIf="newProject.contributors.length > 0">
+                            <div class="tag" *ngFor="let contributor of newProject.contributors; let i = index">
+                                {{ contributor }}
+                                <button type="button" class="tag-remove" (click)="removeContributor(i)">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Links -->
+                    <div class="form-section">
+                        <h3>Project Links</h3>
+
+                        <div class="form-group">
+                            <label for="imageUrl">Project Image URL</label>
+                            <input type="url" id="imageUrl" [(ngModel)]="newProject.imageUrl" name="imageUrl"
+                                placeholder="https://example.com/image.jpg">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="githubUrl">GitHub Repository URL</label>
+                            <input type="url" id="githubUrl" [(ngModel)]="newProject.githubUrl" name="githubUrl"
+                                placeholder="https://github.com/username/repo">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="demoUrl">Live Demo URL</label>
+                            <input type="url" id="demoUrl" [(ngModel)]="newProject.demoUrl" name="demoUrl"
+                                placeholder="https://demo.example.com">
+                        </div>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+                        <button type="button" class="btn-secondary" (click)="resetForm()">
+                            <i class="fas fa-redo"></i>
+                            Reset Form
+                        </button>
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-save"></i>
+                            Add Project
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
